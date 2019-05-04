@@ -1,0 +1,61 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        int compare = 0 ;
+        String confirm ="Yes";
+        Scanner sc=new Scanner(System.in);
+        String A=sc.next();
+        String B=sc.next();
+        sc.close();
+
+        
+        //String characters into character array
+        char[] firstWord = A.toLowerCase().toCharArray();
+        char[] secondWord = B.toLowerCase().toCharArray();
+
+        System.out.println(firstWord.length+secondWord.length);
+
+            //sorting the 2 String words to check is lexographically larger
+            for(int i = 0;i!=firstWord.length;i++){
+                compare = Character.compare(firstWord[i],secondWord[i]);
+                compare+=compare;
+
+                if(compare>0)break;
+                if(compare<0){
+                    confirm = "No";
+                    break;
+                }  
+                if((compare==0) && (i==firstWord.length-1)){
+                    confirm = "No";
+                }
+            }  
+
+        System.out.println(confirm);
+
+            //capitalizing the first character of both Strings
+            for(int j = 0;j!=firstWord.length;j++){
+                if(j==0){
+                    firstWord[0]=(char)(firstWord[0]-'a'+'A');
+                    System.out.print(firstWord[0]);
+                }else{
+                    System.out.print(firstWord[j]);
+                }
+            }
+
+            for(int m = 0;m!=secondWord.length;m++){
+                if(m==0){
+                    secondWord[0]=(char)(secondWord[0]-'a'+'A');
+                    System.out.print(" " + secondWord[0]);
+                }else{
+                    System.out.print(secondWord[m]);
+                }
+            }        
+    }
+}
+
+
+
